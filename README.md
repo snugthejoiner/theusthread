@@ -1,6 +1,6 @@
 == README
 
-An App to thread together US History with a user's history.
+An App to thread together US History with user history.
 
 * Ruby version 2.2.1
 
