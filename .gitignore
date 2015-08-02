@@ -11,3 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+# my notes
+/notes.rb
+
+# SimpleCov
+coverage
