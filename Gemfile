@@ -29,6 +29,8 @@ gem 'bootstrap-sass'
 gem 'faker'
 # user authentication
 gem 'devise'
+# test factories
+gem 'factory_girl_rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
