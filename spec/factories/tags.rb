@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :tag do
     name "MyString"
-historicalevent nil
+    historicalevent nil
   end
 
 end
