@@ -1,1 +1,19 @@
-<h1>HistoricalEvents</h1>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><%= link_to "The US Thread", historical_events_index_path %></li>
+  <li role="presentation"><%= link_to "About", welcome_index_path %></li>
+</ul>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+    <% @historical_events.each do |historical_event| %>
+      <tr>
+        <td><%= historical_event.starting %></td>
+        <td><%= historical_event.description %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
