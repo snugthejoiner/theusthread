@@ -17,4 +17,25 @@ require 'faker'
    user.save!
  end
 
+ 50.times do
+  historical_event = HistoricalEvent.new(
+     description: Faker::Lorem.sentence,
+     starting:    Faker::Date.between(36000.days.ago, 30000.days.ago),
+     ending:      Faker::Date.between(29000.days.ago, 15000.days.ago)
+   )
+   historical_event.save!
+ end
+
+  historical_events = HistoricalEvent.all
+
+  tag_names = ["apple","orange","potato"]
+
+  50.times do
+    tag = Tag.new(
+    name: tag_names.sample,
+    historical_event: historical_events.sample
+    )
+    tag.save!
+  end
+
  puts "Seed finished"
