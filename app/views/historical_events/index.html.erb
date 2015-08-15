@@ -11,7 +11,7 @@
     <% @historical_events.each do |historical_event| %>
       <tr>
         <td><%= historical_event.starting %></td>
-        <td><%= historical_event.description %></td>
+        <td><%= historical_event.description %><br><%= blurb(historical_event) %></td>
       </tr>
       <% end %>
     </table>
