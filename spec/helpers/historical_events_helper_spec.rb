@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the HistoricalEventsHelper. For example:
-#
-# describe HistoricalEventsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe HistoricalEventsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "blurb" do
+    status = Faker::Lorem.sentence
+    it "returns a premilestone_status or ongoing_status if present or an empty string if neither are present" do
+      historical_event = HistoricalEvent.new(premilestone_status: status)
+      expect(helper.blurb(historical_event)).to eq("\n #{status}")
+      historical_event = HistoricalEvent.new(ongoing_status: status)
+      expect(helper.blurb(historical_event)).to eq("\n #{status}")
+      historical_event = HistoricalEvent.new
+      expect(helper.blurb(historical_event)).to eq("")
+    end
+  end
 end

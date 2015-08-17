@@ -26,6 +26,28 @@ require 'faker'
    historical_event.save!
  end
 
+ 10.times do
+  historical_event = HistoricalEvent.new(
+     description: Faker::Lorem.sentence,
+     starting:    Faker::Date.between(36000.days.ago, 30000.days.ago),
+     ending:      Faker::Date.between(29000.days.ago, 15000.days.ago),
+     premilestone_status:      Faker::Lorem.sentence
+
+   )
+   historical_event.save!
+ end
+ 
+ 10.times do
+  historical_event = HistoricalEvent.new(
+     description: Faker::Lorem.sentence,
+     starting:    Faker::Date.between(36000.days.ago, 30000.days.ago),
+     ending:      Faker::Date.between(29000.days.ago, 15000.days.ago),
+     ongoing_status:      Faker::Lorem.sentence
+
+   )
+   historical_event.save!
+ end
+
   historical_events = HistoricalEvent.all
 
   tag_names = ["apple","orange","potato"]
