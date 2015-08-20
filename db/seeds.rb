@@ -49,6 +49,7 @@ require 'faker'
  end
 
   historical_events = HistoricalEvent.all
+  users = User.all
 
   tag_names = ["apple","orange","potato"]
 
@@ -58,6 +59,16 @@ require 'faker'
     historical_event: historical_events.sample
     )
     tag.save!
+  end
+
+  50.times do
+    person = Person.new(
+    name: Faker::Name.name,
+    born: Faker::Date.between(14000.days.ago, 12000.days.ago),
+    died: Faker::Date.between(11000.days.ago, 8000.days.ago),
+    user: users.sample
+    )
+    person.save!
   end
 
  puts "Seed finished"
