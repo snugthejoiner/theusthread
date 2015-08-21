@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815035201) do
+ActiveRecord::Schema.define(version: 20150821032150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 20150815035201) do
   end
 
   add_index "people", ["user_id"], name: "index_people_on_user_id", using: :btree
+
+  create_table "personal_events", force: :cascade do |t|
+    t.string   "description"
+    t.date     "starting"
+    t.date     "ending"
+    t.boolean  "private"
+    t.integer  "person_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "personal_events", ["person_id"], name: "index_personal_events_on_person_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -70,5 +82,6 @@ ActiveRecord::Schema.define(version: 20150815035201) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "people", "users"
+  add_foreign_key "personal_events", "people"
   add_foreign_key "tags", "historical_events"
 end
