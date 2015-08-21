@@ -71,4 +71,17 @@ require 'faker'
     person.save!
   end
 
+  people = Person.all
+
+  50.times do
+    personal_event = PersonalEvent.new(
+    description: Faker::Lorem.sentence,
+    starting: Faker::Date.between(14000.days.ago, 12000.days.ago),
+    ending: Faker::Date.between(11000.days.ago, 8000.days.ago),
+    private: false,
+    person: people.sample
+    )
+    personal_event.save!
+  end
+
  puts "Seed finished"
