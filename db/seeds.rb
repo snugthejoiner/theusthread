@@ -53,10 +53,11 @@ require 'faker'
 
   tag_names = ["apple","orange","potato"]
 
-  50.times do
-    tag = Tag.new(
-    name: tag_names.sample,
-    historical_event: historical_events.sample
+  25.times do
+     tag = Tag.new(
+     name: tag_names.sample,
+     tagable_id: historical_events.sample.id,
+     tagable_type: 'HistoricalEvent'
     )
     tag.save!
   end
@@ -82,6 +83,17 @@ require 'faker'
     person: people.sample
     )
     personal_event.save!
+  end
+
+  personal_events = PersonalEvent.all
+
+  25.times do
+    tag = Tag.new(
+    name: tag_names.sample,
+    tagable_id: personal_events.sample.id,
+    tagable_type: 'PersonalEvent'
+    )
+    tag.save!
   end
 
  puts "Seed finished"
