@@ -7,3 +7,5 @@ An App to thread together US History with user history.
 * Rails 4.2.1
 
 * Postgresql 9.4.4
+
+* Entity Relationship Diagram available as *erd.pdf*
