@@ -5,10 +5,10 @@
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
-    <% @historical_events.each do |historical_event| %>
+    <% @people.each do |person| %>
       <tr>
-        <td><%= historical_event.starting %></td>
-        <td><%= historical_event.description %><br><%= blurb(historical_event) %></td>
+        <td><%= person.born %><br><%= person.died %></td>
+        <td><%= link_to person.name, person %></td>
       </tr>
       <% end %>
     </table>

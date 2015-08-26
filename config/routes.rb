@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  resources :people
+
   resources :personal_events
 
-  get 'historical_events/index'
+  resources :historical_events, only: [:index]
+
+  get 'users/show'
 
   devise_for :users
   get 'welcome/index'
