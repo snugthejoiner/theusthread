@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe PersonalEventsController, type: :controller do
 
+  test_personal_event = PersonalEvent.create
+
   describe "GET #index" do
     it "returns http success" do
       get :index
@@ -11,7 +13,7 @@ RSpec.describe PersonalEventsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      get :show, id:test_personal_event
       expect(response).to have_http_status(:success)
     end
   end
@@ -32,14 +34,14 @@ RSpec.describe PersonalEventsController, type: :controller do
 
   describe "GET #update" do
     it "returns http success" do
-      get :update
+      get :update, id:test_personal_event
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit
+      get :edit, id:test_personal_event
       expect(response).to have_http_status(:success)
     end
   end
