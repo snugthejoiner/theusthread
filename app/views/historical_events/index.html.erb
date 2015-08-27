@@ -7,7 +7,7 @@
     <table class="table table-striped table-hover">
     <% @historical_events.each do |historical_event| %>
       <tr>
-        <td><%= historical_event.starting %></td>
+        <td><%= historical_event.event_start %></td>
         <td><%= historical_event.description %><br><%= blurb(historical_event) %></td>
       </tr>
       <% end %>

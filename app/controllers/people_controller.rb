@@ -6,6 +6,7 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find(params[:id])
+    @personal_events = PersonalEvent.where(person_id: @person.id)
   end
 
   def new
