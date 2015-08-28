@@ -17,6 +17,16 @@ require 'faker'
    user.save!
  end
 
+ 1.times do
+  user = User.new(
+     username: 'snug',
+     email:    'jedpmail@gmail.com',
+     password: 'qwertyuiop'
+   )
+   user.skip_confirmation!
+   user.save!
+ end
+
  50.times do
   historical_event = HistoricalEvent.new(
      description: Faker::Lorem.sentence,
@@ -62,7 +72,7 @@ require 'faker'
     tag.save!
   end
 
-  50.times do
+  3.times do
     person = Person.new(
     name: Faker::Name.name,
     born: Faker::Date.between(14000.days.ago, 12000.days.ago),

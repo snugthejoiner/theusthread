@@ -1,0 +1,36 @@
+<%= render 'navigation' %>
+
+<ol class="breadcrumb">
+  <li><%= link_to "#{@person.user.username}'s people", users_show_path %></li>
+  <li class="active"><%= @person.name %></li>
+</ol>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-bordered table-hover">
+    <caption><%= @person.name %>'s key dates | <%= link_to "edit #{@person.name}", edit_person_path(@person) %></caption>
+    <% @personal_events.each do |personal_event| %>
+      <tr>
+        <td>born <%= @person.born_long_date %></td>
+      </tr>
+      <tr>
+        <td><%= @person.died_long_date %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered table-hover">
+    <caption><%= @person.name %>'s events | <%= link_to "new event", new_personal_event_path(@person) %></caption>
+    <% @personal_events.each do |personal_event| %>
+      <tr>
+        <td><%= personal_event.starting %></td>
+        <td><%= link_to personal_event.description, personal_event %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

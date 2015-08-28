@@ -1,0 +1,27 @@
+<%= render 'navigation' %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-bordered">
+    <caption>account settings | <%= link_to "edit settings", edit_user_registration_path(current_user) %></caption>
+      <tr>
+        <td>username: <%= @user.username %></td>
+      </tr>
+      <tr>
+        <td>email: <%= @user.email %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-bordered table-hover">
+    <caption><%= @user.username %>'s people | <%= link_to "new person", new_person_path(current_user) %></caption>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= link_to person.name, person %> <small>b. <%= person.born_date %></small></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
