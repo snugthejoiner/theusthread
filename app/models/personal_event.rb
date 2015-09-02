@@ -1,6 +1,9 @@
 class PersonalEvent < ActiveRecord::Base
   belongs_to :person
   has_many :tags, as: :tagable
-  
-  default_scope { order(starting: :desc) }
+
+  current_user = User.last
+
+  scope :user_people, -> { where(person_id: current_user.people)}
+
 end
