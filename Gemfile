@@ -31,6 +31,8 @@ gem 'faker'
 gem 'devise'
 # test factories
 gem 'factory_girl_rails'
+# environmanet variables
+gem "figaro"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
