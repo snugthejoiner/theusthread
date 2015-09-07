@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def show
-    @user = User.last
-    @people = Person.where(user_id: @user.id)
+    @people = Person.where(user_id: current_user.id)
   end
 end
