@@ -1,5 +1,7 @@
 class PersonalEventsController < ApplicationController
-  
+  before_filter :require_user # require_user will set the current_user in controllers
+  before_filter :set_current_user
+
   def index
     @personal_events = PersonalEvent.all
   end

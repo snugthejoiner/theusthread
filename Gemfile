@@ -58,4 +58,6 @@ group :development, :test do
   gem 'rspec-rails'
   # to analyze testing coverage
   gem 'simplecov', :require => false
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
