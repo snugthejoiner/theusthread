@@ -1,6 +1,12 @@
 <ul class="nav nav-tabs">
   <li role="presentation" class="active"><%= link_to "The US Thread", historical_events_path %></li>
-  <li role="presentation"><%= link_to "Me", users_show_path %></li>
+  <li role="presentation">
+    <% if current_user %>
+      <%= link_to "Me", users_show_path %>
+    <% else %>
+      <%= link_to "Me", new_user_session_path %>
+      </li>
+    <% end %>
   <li role="presentation"><%= link_to "About", welcome_index_path %></li>
 
   <div class="pull-right user-info">

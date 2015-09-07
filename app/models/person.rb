@@ -9,12 +9,12 @@ class Person < ActiveRecord::Base
   end
 
   def born_long_date
-    self.born.strftime('%A %B %-d, %Y')
+    self.born.strftime('%A, %B %-d, %Y')
   end
 
   def died_long_date
     if self.died.present? == true
-      "died #{self.died.strftime('%A %B %-d, %Y')}"
+      "died #{self.died.strftime('%A, %B %-d, %Y')}"
     else
       ""
     end

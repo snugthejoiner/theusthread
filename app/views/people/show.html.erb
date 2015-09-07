@@ -13,14 +13,10 @@
   <div class="col-md-6">
     <table class="table table-bordered table-hover">
     <caption><%= @person.name %>'s key dates | <%= link_to "edit #{@person.name}", edit_person_path(@person) %></caption>
-    <% @personal_events.each do |personal_event| %>
-      <tr>
-        <td>born <%= @person.born_long_date %></td>
-      </tr>
-      <tr>
-        <td><%= @person.died_long_date %></td>
-      </tr>
-      <% end %>
+      <tr><td>born <%= @person.born_long_date %></td></tr>
+      <% if @person.died.present? == true %>
+        <tr><td><%= @person.died_long_date %></td></tr>
+        <% end %>
     </table>
   </div>
   <div class="col-md-6">

@@ -1,9 +1,13 @@
 class HistoricalEventsController < ApplicationController
-
-  # http://stackoverflow.com/questions/3310947/how-do-i-mix-2-rails-models-into-a-single-find
+  # before_filter :require_user # require_user will set the current_user in controllers
+  # before_filter :set_current_user
 
   def index
-    @events = (HistoricalEvent.all + PersonalEvent.user_people).sort_by { |h| h[:starting] }.reverse!
+    if current_user.nil?
+      @events = HistoricalEvent.all
+    else
+      @events = (HistoricalEvent.all + PersonalEvent.user_people).sort_by { |h| h[:starting] }.reverse!
+    end
   end
   
 end
