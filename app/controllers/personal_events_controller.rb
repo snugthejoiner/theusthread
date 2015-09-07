@@ -1,9 +1,9 @@
 class PersonalEventsController < ApplicationController
-  before_filter :require_user # require_user will set the current_user in controllers
+  # before_filter :require_user # require_user will set the current_user in controllers
   before_filter :set_current_user
 
   def index
-    @personal_events = PersonalEvent.all
+    @personal_events = PersonalEvent.all #should I get rid of this? Or change it to only show PEs of current_user? Seems dangerous
   end
 
   def show
@@ -15,7 +15,7 @@ class PersonalEventsController < ApplicationController
   end
 
   def create
-    @personal_event = PersonalEvent.new(params.require(:personal_event).permit(:description, :ending, :starting, :private))
+    @personal_event = PersonalEvent.new(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
      if @personal_event.save
        flash[:notice] = "Your event was saved."
        redirect_to @personal_event

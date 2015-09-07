@@ -1,5 +1,6 @@
 <%= render 'navigation' %>
 
+
 <ol class="breadcrumb">
   <li><%= link_to "#{@person.user.username}'s people", users_show_path %></li>
   <li class="active"><%= @person.name %></li>
@@ -24,7 +25,7 @@
   </div>
   <div class="col-md-6">
     <table class="table table-bordered table-hover">
-    <caption><%= @person.name %>'s events | <%= link_to "new event", new_personal_event_path(@person) %></caption>
+    <caption><%= @person.name %>'s events | <%= link_to "new event", new_personal_event_path(person_id: @person.id) %></caption>
     <% @personal_events.each do |personal_event| %>
       <tr>
         <td><%= personal_event.starting %></td>

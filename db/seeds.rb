@@ -84,7 +84,7 @@ require 'faker'
 
   people = Person.all
 
-  50.times do
+  5.times do
     personal_event = PersonalEvent.new(
     description: Faker::Lorem.sentence,
     starting: Faker::Date.between(14000.days.ago, 12000.days.ago),
