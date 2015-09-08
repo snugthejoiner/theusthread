@@ -1,4 +1,10 @@
 <%= render 'navigation' %>
+
+<ol class="breadcrumb">
+  <li><%= link_to current_user.username, users_show_path %></li>
+  <li class="active">All events for all my People</li>
+</ol>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 

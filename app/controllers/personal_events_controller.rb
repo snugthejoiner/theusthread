@@ -3,7 +3,7 @@ class PersonalEventsController < ApplicationController
   before_filter :set_current_user
 
   def index
-    @personal_events = PersonalEvent.all #should I get rid of this? Or change it to only show PEs of current_user? Seems dangerous
+    @personal_events = PersonalEvent.user_people
   end
 
   def show
@@ -31,7 +31,7 @@ class PersonalEventsController < ApplicationController
 
   def update
     @personal_event = PersonalEvent.find(params[:id])
-     if @personal_event.update_attributes(params.require(:personal_event).permit(:description, :ending, :starting, :private))
+     if @personal_event.update_attributes(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
        flash[:notice] = "Your event was updated."
        redirect_to @personal_event
      else
