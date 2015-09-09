@@ -33,7 +33,7 @@ class PersonalEventsController < ApplicationController
     @personal_event = PersonalEvent.find(params[:id])
      if @personal_event.update_attributes(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
        flash[:notice] = "Your event was updated."
-       redirect_to @personal_event
+       redirect_to @personal_event.person
      else
        flash[:error] = "There was an error saving changes to your event. Please try again."
        render :new

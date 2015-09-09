@@ -12,4 +12,11 @@ require 'rails_helper'
 # end
 RSpec.describe PersonalEventsHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "event_start" do
+    it "returns the start date of an event formatted as MM/DD/YYYY" do
+      event = PersonalEvent.new
+      expect(helper.event_start(event)).to eq("08/20/2015")
+    end
+  end
 end
