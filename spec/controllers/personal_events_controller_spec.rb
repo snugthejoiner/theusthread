@@ -2,55 +2,46 @@ require 'rails_helper'
 
 RSpec.describe PersonalEventsController, type: :controller do
 
-  test_personal_event = PersonalEvent.create
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    sign_in @user
+    @person = FactoryGirl.create(:person, user_id: @user.id)
+    @personal_event = FactoryGirl.create(:personal_event, person_id: @person.id)
+  end
 
   describe "GET #index" do
     it "returns http success" do
       get :index
-      expect(response).to have_http_status(:success)
+      expect(response.status).to eq(200)
     end
   end
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id:test_personal_event
-      expect(response).to have_http_status(:success)
+      get :show, id: @personal_event
+      expect(response.status).to eq(200)
     end
   end
 
   describe "GET #new" do
     it "returns http success" do
       get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #update" do
-    it "returns http success" do
-      get :update, id:test_personal_event
-      expect(response).to have_http_status(:success)
+      expect(response.status).to eq(200)
     end
   end
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit, id:test_personal_event
-      expect(response).to have_http_status(:success)
+      get :edit, id:@personal_event
+      expect(response.status).to eq(200)
     end
   end
 
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-  end
+  # describe "GET #destroy" do
+    # it "returns http success" do
+      # get :destroy
+      # expect(response).to have_http_status(:success)
+    # end
+  # end
 
 end

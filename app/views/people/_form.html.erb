@@ -12,8 +12,7 @@
       <%= f.label :died %>
       <%= f.date_field :died, class: 'form-control', placeholder: "died Date" %>
     </div>
-    <!-- update with current_user_id -->
-    <%= f.hidden_field :user_id, value: 6 %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="form-group">
       <%= f.submit "Save", class: 'btn btn-success' %>
     </div>

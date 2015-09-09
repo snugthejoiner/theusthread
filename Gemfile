@@ -31,6 +31,8 @@ gem 'faker'
 gem 'devise'
 # test factories
 gem 'factory_girl_rails'
+# environmanet variables
+gem "figaro"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -56,4 +58,6 @@ group :development, :test do
   gem 'rspec-rails'
   # to analyze testing coverage
   gem 'simplecov', :require => false
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end

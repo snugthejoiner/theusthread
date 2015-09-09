@@ -3,7 +3,7 @@ FactoryGirl.define do
     name "MyString"
     born "2015-08-14"
     died "2015-08-14"
-    user nil
+    user
   end
 
 end

@@ -4,6 +4,7 @@ FactoryGirl.define do
     starting "2015-08-20"
     ending "2015-08-20"
     private false
+    person
   end
 
 end

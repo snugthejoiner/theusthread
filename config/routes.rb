@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :people
+  resources :people, except: [:index]
 
   resources :personal_events
 

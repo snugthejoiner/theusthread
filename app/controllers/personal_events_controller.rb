@@ -1,7 +1,9 @@
 class PersonalEventsController < ApplicationController
-  
+  # before_filter :require_user # require_user will set the current_user in controllers
+  before_filter :set_current_user
+
   def index
-    @personal_events = PersonalEvent.all
+    @personal_events = PersonalEvent.user_people
   end
 
   def show
@@ -13,7 +15,7 @@ class PersonalEventsController < ApplicationController
   end
 
   def create
-    @personal_event = PersonalEvent.new(params.require(:personal_event).permit(:description, :ending, :starting, :private))
+    @personal_event = PersonalEvent.new(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
      if @personal_event.save
        flash[:notice] = "Your event was saved."
        redirect_to @personal_event
@@ -29,9 +31,9 @@ class PersonalEventsController < ApplicationController
 
   def update
     @personal_event = PersonalEvent.find(params[:id])
-     if @personal_event.update_attributes(params.require(:personal_event).permit(:description, :ending, :starting, :private))
+     if @personal_event.update_attributes(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
        flash[:notice] = "Your event was updated."
-       redirect_to @personal_event
+       redirect_to @personal_event.person
      else
        flash[:error] = "There was an error saving changes to your event. Please try again."
        render :new
