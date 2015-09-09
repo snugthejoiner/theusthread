@@ -30,20 +30,6 @@ RSpec.describe PersonalEventsController, type: :controller do
     end
   end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create, id:@personal_event
-      expect(response.status).to eq(200)
-    end
-  end
-
-  describe "GET #update" do
-    it "returns http success" do
-      get :update, id:@personal_event
-      expect(response.status).to eq(200)
-    end
-  end
-
   describe "GET #edit" do
     it "returns http success" do
       get :edit, id:@personal_event
