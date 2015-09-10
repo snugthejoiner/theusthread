@@ -11,11 +11,14 @@ class PersonalEventsController < ApplicationController
   end
 
   def new
-    @personal_event = PersonalEvent.new
+    @person = Person.find(params[:person_id])
+    @personal_event = @person.personal_events.build
+    @personal_events = @person.personal_events.all
   end
 
   def create
-    @personal_event = PersonalEvent.new(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
+    @person = Person.find(params[:person_id])
+    @personal_event = @person.personal_events.build(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
      if @personal_event.save
        flash[:notice] = "Your event was saved."
        redirect_to @personal_event

@@ -16,7 +16,7 @@
          <%= f.label :private %>
          <%= f.check_box :private, class: 'form-control'%>
        </div>
-      <%= f.hidden_field :person_id, value: personator(@personal_event) %>
+      <%= f.hidden_field :person_id %>
        <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>
        </div>

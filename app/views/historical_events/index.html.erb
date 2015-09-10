@@ -12,10 +12,12 @@
           <% if blurb(event) %>
             <br><%= blurb(event) %>
           <% end %>
+          <% if @current_user %>
           <% @current_user.people.each do |person| %>
               <% if age_of_person(event, person) %>
                 <br><%= age_of_person(event, person) %>
               <% end %>
+            <% end %>
             <% end %>
         </td>
       </tr>
