@@ -17,7 +17,7 @@ class PersonalEventsController < ApplicationController
   end
 
   def create
-    @person = Person.find(params[:person_id])
+    @person = Person.find(params[:personal_event][:person_id])
     @personal_event = @person.personal_events.build(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
      if @personal_event.save
        flash[:notice] = "Your event was saved."
