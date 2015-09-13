@@ -1,3 +1,16 @@
 <%= render 'navigation' %>
 
+<ol class="breadcrumb">
+  <li><%= link_to @personal_event.person.user.username, users_show_path %></li>
+  <li><%= link_to @personal_event.person.name, @personal_event.person %></li>
+  <li class="active">event</li>
+</ol>
+
+<% unless notice.nil? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+<p class="alert"><%= alert %></p>
+
 <%= render 'form' %>
+
+<%= link_to "delete", remove_personal_event_path(id: @personal_event.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

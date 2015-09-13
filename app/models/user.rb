@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :confirmable, :validatable
 
+  validates :username, presence: true
+
   def self.current
     Thread.current[:user]
   end

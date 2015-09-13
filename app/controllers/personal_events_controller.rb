@@ -21,7 +21,7 @@ class PersonalEventsController < ApplicationController
     @personal_event = @person.personal_events.build(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private))
      if @personal_event.save
        flash[:notice] = "Your event was saved."
-       redirect_to @personal_event
+       redirect_to @person
      else
        flash[:error] = "There was an error saving your event. Please try again."
        render :new
@@ -44,5 +44,14 @@ class PersonalEventsController < ApplicationController
   end
 
   def destroy
+    @personal_event = PersonalEvent.find(params[:id])
+    @personal_event.destroy
+    if @personal_event.destroy
+      flash[:notice] = "This event has been removed"
+      redirect_to @personal_event.person
+    else
+      flash[:error] = "There was an error."
+      render :show
+    end
   end
 end

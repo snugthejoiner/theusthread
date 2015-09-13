@@ -1,6 +1,10 @@
 <%= render 'navigation' %>
-<p class="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
 <p class="alert"><%= alert %></p>
+
+
 
 <h2>Log in</h2>
 

@@ -1,15 +1,19 @@
 <%= render 'navigation' %>
-<p class="notice"><%= notice %></p>
+
+<ol class="breadcrumb">
+  <li><%= link_to current_user.username, users_show_path %></li>
+  <li class="active"><%= @person.name %></li>
+</ol>
+
+<% unless notice.nil? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
 <p class="alert"><%= alert %></p>
+
+<h1>New Person for <%= current_user.username %></h1>
  
  <div class="row">
-   <div class="col-md-4">
-     <p>Enter info for your new person</p>
-     <ul>
-       <li>Enter a name.</li>
-       <li>Enter date of birth.</li>
-       <li>If this person is no longer alive, enter the date this person died.</li>
-     </ul>
+   <div class="col-md-12">
+    <%= render 'form' %>
    </div>
-   <%= render 'form' %>
  </div>

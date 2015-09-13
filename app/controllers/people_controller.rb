@@ -39,7 +39,7 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
      if @person.destroy
        flash[:notice] = "Your Person was deleted."
-       redirect_to @person
+       redirect_to users_show_path
      else
        flash[:error] = "There was an error saving changes to your Person. Please try again."
        render :new

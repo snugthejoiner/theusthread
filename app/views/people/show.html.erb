@@ -5,13 +5,17 @@
   <li class="active"><%= @person.name %></li>
 </ol>
 
-<p class="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
 <p class="alert"><%= alert %></p>
+
+
 
 <div class="row">
   <div class="col-md-6">
     <table class="table table-bordered table-hover">
-    <caption><%= @person.name %>'s key dates | <%= link_to "edit #{@person.name}", edit_person_path(@person) %></caption>
+    <caption><%= @person.name %>'s key dates | <%= link_to "edit", edit_person_path(@person) %> | <%= link_to "delete", remove_person_path(id: @person.id), method: :delete, data: { confirm: 'Are you sure?' } %></caption>
       <tr><td>born <%= @person.born_long_date %></td></tr>
       <% if @person.died.present? == true %>
         <tr><td><%= @person.died_long_date %></td></tr>

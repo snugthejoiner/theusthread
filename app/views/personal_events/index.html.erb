@@ -5,8 +5,12 @@
   <li class="active">All events for all my People</li>
 </ol>
 
-<p class="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
 <p class="alert"><%= alert %></p>
+
+
 
 <div class="row">
   <div class="col-md-12">
@@ -14,7 +18,7 @@
     <% @personal_events.each do |personal_event| %>
       <tr>
         <td><%= personal_event.starting %><br><%= personal_event.ending %></td>
-        <td><%= link_to personal_event.description, personal_event %></td>
+        <td><%= link_to personal_event.description, edit_personal_event_path(personal_event) %></td>
       </tr>
       <% end %>
     </table>

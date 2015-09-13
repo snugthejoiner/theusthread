@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
+  delete 'remove_personal_event' => 'personal_events#destroy'
+
+  delete 'remove_person' => 'people#destroy'
+
   devise_for :users
   get 'welcome/index'
 
