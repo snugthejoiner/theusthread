@@ -1,8 +1,8 @@
 module HistoricalEventsHelper
 
   def summary(event)
-    if event.class.name == "PersonalEvent
-      " #{event.person.name} #{event.description.downcase}"
+    if event.class.name == "PersonalEvent" 
+      "#{event.person.name} #{event.description.downcase} "
     else
       event.description
     end
@@ -30,6 +30,11 @@ module HistoricalEventsHelper
 
   def event_start(event)
     event.starting.strftime('%m/%d/%Y')
+  end
+
+  def taglist(event)
+    a = event.tags.pluck(:name)
+    a.join(", ")
   end
 
 end

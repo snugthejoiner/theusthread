@@ -4,6 +4,4 @@ module PersonalEventsHelper
     personal_event.starting.strftime('%m/%d/%Y')
   end
 
-  
-
 end
