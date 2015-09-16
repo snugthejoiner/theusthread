@@ -30,6 +30,7 @@ class PersonalEventsController < ApplicationController
 
   def edit
     @personal_event = PersonalEvent.find(params[:id])
+    @tags = Tag.select("Distinct name")
   end
 
   def update

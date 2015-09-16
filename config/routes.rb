@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :historical_events, only: [:index]
 
+  resource :tags
+
   get 'users/show'
 
   delete 'remove_personal_event' => 'personal_events#destroy'

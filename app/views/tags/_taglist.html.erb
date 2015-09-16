@@ -1,0 +1,7 @@
+<% Tag.select("Distinct name").each do |tag| %>
+  <%= link_to tag.name, tags_path(id: @personal_event.id), method: :create %>
+<% end %>
+
+<% @personal_event.tags.each do |tag| %>
+  <%= link_to tag.name, tag, method: :delete, remote: true %>
+<% end %>
