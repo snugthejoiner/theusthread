@@ -12,6 +12,3 @@
 <p class="alert"><%= alert %></p>
 
 <%= render 'form' %>
-<%= render :partial => '/tags/taglist.html.erb' %>
-
-<%= link_to "delete", remove_personal_event_path(id: @personal_event.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

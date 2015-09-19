@@ -1,7 +1,5 @@
-<% Tag.select("Distinct name").each do |tag| %>
-  <%= link_to tag.name, tags_path(id: @personal_event.id), method: :create %>
-<% end %>
-
-<% @personal_event.tags.each do |tag| %>
-  <%= link_to tag.name, tag, method: :delete, remote: true %>
+<%= form_for(Tag.new) do |f| %>
+<div class="actions">
+    <%= f.select(:name, options_for_select([["apple"],["orange"],["potato"]],tagable_id: @personal_event.id)) %>
+</div>
 <% end %>

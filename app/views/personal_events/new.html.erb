@@ -9,7 +9,9 @@
 <% unless notice.nil? %>
   <p class="notice"><%= notice %></p>
 <% end %>
-<p class="alert"><%= alert %></p>
+<% unless alert.nil? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
 
 <h1>New Event for <%= @person.name %></h1>
 

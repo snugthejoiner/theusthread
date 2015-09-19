@@ -9,8 +9,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @personal_event = PersonalEvent.find(params[:id])
-    @tag = Tag.new(params.require(:tag).permit(:name))
+    @tag = Tag.new.(params.require.(:tag).permit(:name, :tagable_id))
     if @tag.save
       flash[:notice] = "Tag was created."
     else
