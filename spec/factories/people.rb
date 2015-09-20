@@ -5,5 +5,4 @@ FactoryGirl.define do
     died "2015-08-14"
     user
   end
-
 end
