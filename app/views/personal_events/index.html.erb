@@ -10,15 +10,13 @@
 <% end %>
 <p class="alert"><%= alert %></p>
 
-
-
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
-    <% @personal_events.each do |personal_event| %>
+    <% @personal_events.personal_newest.each do |personal_event| %>
       <tr>
-        <td><%= personal_event.starting %><br><%= personal_event.ending %></td>
-        <td><%= link_to personal_event.description, edit_personal_event_path(personal_event) %></td>
+        <td><%= event_start(personal_event) %>
+        <td><%= link_to personal_summary(personal_event), edit_personal_event_path(personal_event) %></td>
       </tr>
       <% end %>
     </table>

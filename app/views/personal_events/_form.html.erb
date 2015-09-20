@@ -30,6 +30,7 @@
       <%= f.hidden_field :person_id %>
        <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>
+         <%= f.submit "Delete", class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete this event?" }%>
        </div>
      <% end %>
    </div>

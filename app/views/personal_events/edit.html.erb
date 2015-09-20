@@ -9,6 +9,14 @@
 <% unless notice.nil? %>
   <p class="notice"><%= notice %></p>
 <% end %>
-<p class="alert"><%= alert %></p>
+<% unless alert.nil? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
 
-<%= render 'form' %>
+<h1>Edit <em><%= summary(@personal_event)%></em></h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'form' %>
+  </div>
+ </div>
