@@ -54,6 +54,7 @@ GEM
     byebug (5.0.0)
       columnize (= 0.9.0)
     choice (0.2.0)
+    cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -178,6 +179,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_form (3.1.1)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -217,6 +221,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   byebug
+  cocoon
   coffee-rails (~> 4.1.0)
   devise
   factory_girl_rails
@@ -231,6 +236,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form
   simplecov
   spring
   turbolinks

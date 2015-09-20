@@ -1,6 +1,13 @@
 <%= render 'navigation' %>
-<p class="notice"><%= notice %></p>
+
+<ol class="breadcrumb">
+  <li><%= link_to current_user.username, users_show_path %></li>
+  <li class="active"><%= @person.name %></li>
+</ol>
+
+<% unless notice.nil? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
 <p class="alert"><%= alert %></p>
 
-<h1>People#edit</h1>
-<p>Find me in app/views/people/edit.html.erb</p>
+<%= render 'form' %>

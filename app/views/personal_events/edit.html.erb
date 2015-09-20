@@ -1,3 +1,22 @@
 <%= render 'navigation' %>
 
-<%= render 'form' %>
+<ol class="breadcrumb">
+  <li><%= link_to @personal_event.person.user.username, users_show_path %></li>
+  <li><%= link_to @personal_event.person.name, @personal_event.person %></li>
+  <li class="active">event</li>
+</ol>
+
+<% unless notice.nil? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
+<% unless alert.nil? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
+
+<h1>Edit <em><%= summary(@personal_event)%></em></h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'form' %>
+  </div>
+ </div>

@@ -1,5 +1,7 @@
 <%= render 'navigation' %>
-<p class="notice"><%= notice %></p>
+<% unless notice.nil? %>
+  <p class="notice"><%= notice %></p>
+<% end %>
 <p class="alert"><%= alert %></p>
 
 <div class="row">
@@ -12,12 +14,16 @@
           <% if blurb(event) %>
             <br><%= blurb(event) %>
           <% end %>
-          <% @current_user.people.each do |person| %>
+          <% if @current_user %>
+            <% @current_user.people.each do |person| %>
               <% if age_of_person(event, person) %>
                 <br><%= age_of_person(event, person) %>
               <% end %>
             <% end %>
-        </td>
+          <% end %>
+          <% if event.tags %>
+            <br><small><em><%= taglist(event) %></em></small>
+          <% end %>
       </tr>
       <% end %>
     </table>

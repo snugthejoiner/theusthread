@@ -1,0 +1,8 @@
+<div class="nested-fields">
+  <div class="form-group">
+    <%= f.select :name, Tag.available, class: 'form-control' %>
+    <%= f.hidden_field :tagable_id, :value => @personal_event.id %>
+    <%= f.hidden_field :tagable_type, :value => "PersonalEvent" %>
+    <%= link_to_remove_association "remove tag", f %>
+  </div>
+</div>

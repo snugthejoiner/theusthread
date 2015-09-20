@@ -15,9 +15,12 @@ RSpec.describe HistoricalEventsHelper, type: :helper do
 
   describe "summary" do
     it "returns the name of the Person and the description for PersonalEvents and just the event description for HistorcalEvents" do
-      event = HistoricalEvent.new
+      description = Faker::Lorem.sentence
+      user = FactoryGirl.create(:user)
+      person = FactoryGirl.create(:person, user_id: user.id)
+      event = HistoricalEvent.new(description: description)
       expect(helper.summary(event)).to eq(event.description)
-      pevent = PersonalEvent.new
+      pevent = PersonalEvent.new(description: description)
       expect(helper.summary(pevent)).to eq(pevent.description)
     end
   end
