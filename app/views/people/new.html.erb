@@ -8,7 +8,9 @@
 <% unless notice.nil? %>
   <p class="notice"><%= notice %></p>
 <% end %>
-<p class="alert"><%= alert %></p>
+<% unless alert.nil? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
 
 <h1>New Person for <%= current_user.username %></h1>
  
