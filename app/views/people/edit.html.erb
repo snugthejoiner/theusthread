@@ -8,6 +8,8 @@
 <% unless notice.nil? %>
   <p class="notice"><%= notice %></p>
 <% end %>
-<p class="alert"><%= alert %></p>
+<% unless alert.nil? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
 
 <%= render 'form' %>
