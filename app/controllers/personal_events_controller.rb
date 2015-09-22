@@ -33,7 +33,6 @@ class PersonalEventsController < ApplicationController
   end
 
   def update
-    @person = Person.find(params[:personal_event][:person_id])
     @personal_event = PersonalEvent.find(params[:id])
      if @personal_event.update_attributes(params.require(:personal_event).permit(:description, :ending, :starting, :person_id, :private,tags_attributes: [:id, :name, :tagable_id, :tagable_type, :_destroy]))
         flash[:notice] = "Your event was updated."

@@ -58,9 +58,7 @@ RSpec.describe PersonalEventsController, type: :controller do
     it "valid params" do
       @person = FactoryGirl.create(:person, user_id: @user.id, name: "Laura Vandervoort")
       @personal_event = FactoryGirl.create(:personal_event, person_id: @person.id)
-      binding.pry
-      post :update, id: @personal_event.id, person_id: @person.id, personal_event: {description: "MyNewString"}, format: :json
-
+      post :update, id: @personal_event.id, personal_event: {description: "MyNewString"}, format: :json
       expect(flash["notice"]).to eq("Your event was updated.")
       expect(@personal_event.reload.description.to_s).to include("MyNewString")
       expect(@personal_event.reload.starting).to eq("2015-08-20")
