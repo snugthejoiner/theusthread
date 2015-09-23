@@ -4,11 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @name %></h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is: <%= @name %>.<br>
-    </p>
+  <h1><%= Date::MONTHNAMES[Date.today.month] %></h1>
+  <p>
+  <% @historical_events.each do |event| %>
+    <%= event.starting %> <%= event.description %><br>
+  <% end %>
+  </p>
     <p>
       To login to the site, just follow this link: <%= @url %>.
     </p>
