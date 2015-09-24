@@ -4,15 +4,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-  <h1><%= Date::MONTHNAMES[Date.today.month] %></h1>
-  <p>
-  <% @historical_events.each do |event| %>
-    <%= event.starting %> <%= event.description %><br>
+  <h2>Hello, <%= @user.username %>, here are US Thread Events for <%= Date::MONTHNAMES[Date.today.month] %></h2>
+  <h3>Historical Events</h3>
+  <% @historical_events.newest.each do |event| %>
+    <%= event.starting.strftime('%A, %B %-d, %Y') %> - <%= event.description %><br>
   <% end %>
-  </p>
+  <h3>Your Events</h3>
+  <% @people.each do |p| %>
+    <% p.personal_events.personal_monthy.personal_newest.each do |pe| %>
+    <%= pe.starting.strftime('%A, %B %-d, %Y') %> - <%= p.name %> <%= pe.description.downcase %><br>
+    <% end %>
+  <% end %>
     <p>
       To login to the site, just follow this link: <%= @url %>.
     </p>
-    <p>Thanks for joining and have a great day!</p>
   </body>
 </html>
