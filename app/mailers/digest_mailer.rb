@@ -9,11 +9,11 @@ class DigestMailer < ApplicationMailer
     mail(to: user.email, subject: "This month's events")
   end
 
-  def digest_email_2(user)
-    @events = HistoricalEvent.monthy
-    @user = user
-    @people = @user.people
-    mail(to: user.email, subject: "This month's events")
+  def digest_email_batch
+    @user = User.all
+    @user.each do |u|
+      digest_email(u)
+    end
   end
 
 end

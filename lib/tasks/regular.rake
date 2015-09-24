@@ -1,3 +1,3 @@
-task :pick_winner => :environment do
-  DigestMailer.digest_email(User.last,Person.last).deliver_now
-end
+# task :pick_winner => :environment do
+  # DigestMailer.digest_email(User.last).deliver_now
+# end
