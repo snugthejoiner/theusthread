@@ -6,7 +6,6 @@ class DigestMailer < ApplicationMailer
     @historical_events = HistoricalEvent.monthy
     @people = user_people
     @username = user_username
-    binding.pry
     mail(to: user_email, subject: "This month's events")
   end
 
