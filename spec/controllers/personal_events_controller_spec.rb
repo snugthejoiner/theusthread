@@ -61,9 +61,9 @@ RSpec.describe PersonalEventsController, type: :controller do
       post :update, id: @personal_event.id, personal_event: {description: "MyNewString"}, format: :json
       expect(flash["notice"]).to eq("Your event was updated.")
       expect(@personal_event.reload.description.to_s).to include("MyNewString")
-      expect(@personal_event.reload.starting).to eq("Thu, 20 Aug 2015")
+      expect(@personal_event.reload.starting).to eq("2015-08-20".to_date)
     end
-  end 
+  end
 
   describe "GET #destroy" do
     it "destroys the personal_event" do
