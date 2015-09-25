@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-  <h2>Hello, <%= @user.username %>, here are US Thread Events for <%= Date::MONTHNAMES[Date.today.month] %></h2>
+  <h2>Hello, <%= @username %>, here are US Thread Events for <%= Date::MONTHNAMES[Date.today.month] %></h2>
   <h3>Historical Events</h3>
   <% @historical_events.newest.each do |event| %>
     <%= event.starting.strftime('%A, %B %-d, %Y') %> - <%= event.description %><br>
