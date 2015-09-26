@@ -7,7 +7,7 @@ class DigestMailer < ApplicationMailer
     @people = @user.people
     message_params = {:from    => 'no-reply@theusthread.com',
                         :to      =>  user.email,
-                        :subject => 'This month\'s events'}
+                        :subject => 'This month\'s US Thread events'}
 
     mail(message_params)
   end

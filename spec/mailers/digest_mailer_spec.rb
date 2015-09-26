@@ -3,7 +3,7 @@ require "rails_helper"
 describe 'digest_email' do
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @mail = DigestMailer.digest_email(@user.email,@user.username,@user.people)
+    @mail = DigestMailer.digest_email(@user)
   end
 
   it 'renders the subject' do

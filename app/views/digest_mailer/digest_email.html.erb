@@ -15,6 +15,8 @@
       <p><%= pe.starting.strftime('%A, %B %-d, %Y') %> <%= p.name %> <%= pe.description.downcase %><br></p>
     <% end %>
   <% end %>
-  <p>Have a good month, <%= link_to "The US Thread", @url %></p>
+  <br>
+  <strong>Have a good month, <%= link_to "The US Thread", root_url %></strong>
+  <p>You can unsubscribe from this monthly email by updating your <%= link_to "user profile", edit_user_registration_url(@user) %></p>  
   </body>
 </html>
