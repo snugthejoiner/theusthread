@@ -10,7 +10,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <p>All information is required to register</p>
+  <p>All information below is required to register</p>
   <h3>Email</h3>
   <div class="field">
     <%= f.email_field :email, autofocus: true %>
@@ -20,6 +20,13 @@
   <div class="field">
     <%= f.text_field :username %>
   </div>
+
+  <h3>Subscribe</h3>
+  <p>Get a monthly email listing historical and personal events for that month</p>
+  <div class="field">
+    <%= f.check_box :subscribe %>
+  </div>
+
   <h4>Password
   <div class="field">
     <% if @minimum_password_length %>

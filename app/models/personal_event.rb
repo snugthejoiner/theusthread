@@ -5,5 +5,6 @@ class PersonalEvent < ActiveRecord::Base
 
   scope :user_people, -> { where(person_id: User.current.people)}
   scope :personal_newest, -> { order(starting: :desc) }
+  scope :personal_monthy, -> { where('extract(month from starting) = ?', Time.now.month)}
 
 end

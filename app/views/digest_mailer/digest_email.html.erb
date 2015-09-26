@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Hello, <%= @user.username %>, here are US Thread Events for <%= Date::MONTHNAMES[Date.today.month] %></h3>
+    <h4>Historical Events</h4>
+    <% @historical_events.each do |historical_event| %>
+      <p><%= historical_event.starting.strftime('%A, %B %-d, %Y') %> <%= historical_event.description %></p>
+    <% end %>
+    <h4>Personal Events</h4>
+    <% @people.each do |p| %>
+      <% p.personal_events.personal_monthy.personal_newest.each do |pe| %>
+      <p><%= pe.starting.strftime('%A, %B %-d, %Y') %> <%= p.name %> <%= pe.description.downcase %><br></p>
+    <% end %>
+  <% end %>
+  <br>
+  <strong>Have a good month, <%= link_to "The US Thread", root_url %></strong>
+  <p>You can unsubscribe from this monthly email by updating your <%= link_to "user profile", edit_user_registration_url(@user) %></p>  
+  </body>
+</html>

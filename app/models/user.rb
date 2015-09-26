@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true
 
+  scope :subscribed, -> { where(subscribe: true)}
+
   def self.current
     Thread.current[:user]
   end

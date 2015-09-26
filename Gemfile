@@ -35,6 +35,7 @@ gem 'factory_girl_rails'
 gem "figaro"
 gem "simple_form"
 gem "cocoon"
+gem 'whenever', :require => false
 
 
 # Use ActiveModel has_secure_password
@@ -63,4 +64,5 @@ group :development, :test do
   gem 'simplecov', :require => false
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener'
 end
