@@ -1,3 +1,6 @@
-# task :pick_winner => :environment do
-  # DigestMailer.digest_email(User.last).deliver_now
-# end
+task :send_monthly => :environment do
+  users = User.all
+  users.each do |user| 
+    DigestMailer.digest_email(user).deliver_now
+  end
+end

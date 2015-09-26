@@ -1,19 +1,15 @@
 class DigestMailer < ApplicationMailer
 
-  default from:"no-reply@theusthread.com"
+  def digest_email(user)
+    @url = 'http://theusthread.com/historical_events'
+    @user = user
+    @historical_events = HistoricalEvent.all.newest.monthy
+    @people = @user.people
+    message_params = {:from    => 'no-reply@theusthread.com',
+                        :to      =>  user.email,
+                        :subject => 'This month\'s events'}
 
-  def digest_email(user_email,user_username,user_people)
-    @historical_events = HistoricalEvent.monthy
-    @people = user_people
-    @username = user_username
-    mail(to: user_email, subject: "This month's events")
-  end
-
-  def digest_email_batch
-    @users = User.all
-    @users.each do |user|
-      digest_email(user.email,user.username,user.people)
-    end
+    mail(message_params)
   end
 
 end
