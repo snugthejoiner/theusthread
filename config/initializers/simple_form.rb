@@ -42,13 +42,13 @@ SimpleForm.setup do |config|
     ## Inputs
     b.use :label_input
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
-    b.use :error, wrap_with: { tag: :span, class: :error }
+    b.use :alert, wrap_with: { tag: :span, class: :alert }
 
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
     # use the component :full_error, like:
     #
-    # b.use :full_error, wrap_with: { tag: :span, class: :error }
+    # b.use :full_error, wrap_with: { tag: :span, class: :alert }
   end
 
   # The default wrapper to be used by the FormBuilder.
@@ -97,7 +97,7 @@ SimpleForm.setup do |config|
   # config.item_wrapper_class = nil
 
   # How the label text should be generated altogether with the required text.
-  # config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
+  config.label_text = lambda { |label, required, explicit_label| "#{label}" }
 
   # You can define the class to use on all labels. Default is nil.
   # config.label_class = nil
@@ -110,7 +110,7 @@ SimpleForm.setup do |config|
   # config.generate_additional_classes_for = [:wrapper, :label, :input]
 
   # Whether attributes are required by default (or not). Default is true.
-  # config.required_by_default = true
+  config.required_by_default = false
 
   # Tell browsers whether to use the native HTML5 validations (novalidate form option).
   # These validations are enabled in SimpleForm's internal config but disabled by default

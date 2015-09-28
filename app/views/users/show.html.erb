@@ -24,6 +24,7 @@
     </table>
   </div>
   <div class="col-md-6">
+
     <table class="table table-bordered table-hover">
     <caption>My People | <%= link_to "new person", new_person_path(current_user) %></caption>
     <% @people.each do |person| %>
@@ -32,6 +33,10 @@
       </tr>
       <% end %>
     </table>
-    <%= link_to "All events for all my People", personal_events_path %>
+    <% if current_user.user_people_evented? %>
+      <%= link_to "All events for all my People", personal_events_path %>
+      <% elsif %>
+      <p>You have no events yet. Select one of your people and create some.</p>
+    <% end %>
   </div>
 </div>

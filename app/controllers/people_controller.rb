@@ -11,13 +11,16 @@ class PeopleController < ApplicationController
 
   def create
     @person = Person.new(params.require(:person).permit(:name, :born, :died, :user_id))
-     if @person.save
+    if @person.save
        flash[:notice] = "Your new Person's info has been saved."
        redirect_to @person
-     else
-       flash[:error] = "There was an error saving your person. Please try again."
-       render :new
-     end
+    elsif @person.invalid?
+       flash[:alert] = "You must enter a name and a date of birth."
+       redirect_to new_person_path(user_id: current_user.id)
+    else
+       flash[:alert] = "There was an error saving your person. Please try again."
+       redirect_to new_person_path(user_id: current_user.id)
+    end
   end
 
   def edit
@@ -26,22 +29,25 @@ class PeopleController < ApplicationController
 
   def update
     @person = Person.find(params[:id])
-     if @person.update_attributes(params.require(:person).permit(:name, :born, :died))
-       flash[:notice] = "Your Person was updated."
-       redirect_to @person
-     else
-       flash[:error] = "There was an error saving changes to your Person. Please try again."
-       render :new
-     end
+    if @person.update_attributes(params.require(:person).permit(:name, :born, :died))
+      flash[:notice] = "Your person was updated."
+      redirect_to @person
+    elsif @person.invalid?
+      flash[:alert] = "A person must have a name and a date of birth."
+      redirect_to new_person_path(user_id: current_user.id)
+    else
+      flash[:alert] = "There was an error saving changes to your Person. Please try again."
+      redirect_to edit_person_path(user_id: current_user.id)
+    end
   end
 
   def destroy
     @person = Person.find(params[:id])
      if @person.destroy
-       flash[:notice] = "Your Person was deleted."
+       flash[:notice] = "Your person was deleted."
        redirect_to users_show_path
      else
-       flash[:error] = "There was an error saving changes to your Person. Please try again."
+       flash[:alert] = "There was an error saving changes to your person. Please try again."
        render :new
      end
   end

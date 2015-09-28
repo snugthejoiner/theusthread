@@ -2,16 +2,15 @@
      <%= simple_form_for @personal_event do |f| %>
       <div class="form-group">
          <%= f.label :description %>
-         <%= f.text_field :description, class: 'form-control', placeholder: "Description" %>
+         <%= f.text_field :description, autofocus: true, class: 'form-control' %>
       </div>
       <div class="form-group">
-         <%= f.label :starting %>
-         <%= f.date_field :starting, class: 'form-control', placeholder: "Starting Date" %>
+         <%= f.label :date %>
+         <%= f.date_field :starting, :value => @personal_event.person.born.strftime('%Y-%m-%d'), class: 'form-control' %>
       </div>
-        <div class="form-group">
-         <%= f.label :ending %>
-         <%= f.date_field :ending, class: 'form-control', placeholder: "Ending Date" %>
-      </div>
+      <!-- <div class="form-group"> -->
+      <!-- if I decide to implement end date -->
+      <!-- </div> -->
       <div class="form-group">
          <%= f.label :private %>
          <%= f.check_box :private%>
@@ -30,7 +29,7 @@
       <%= f.hidden_field :person_id %>
        <div class="form-group">
          <%= f.submit "Save", class: 'btn btn-success' %>
-         <%= f.submit "Delete", class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete this event?" }%>
+         <%= link_to "DELETE", remove_personal_event_path(id: @personal_event.id), method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: 'btn btn-danger' %>
        </div>
      <% end %>
    </div>

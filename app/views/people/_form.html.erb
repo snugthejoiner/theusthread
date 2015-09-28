@@ -2,7 +2,7 @@
   <%= form_for @person do |f| %>
     <div class="form-group">
       <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control', placeholder: "name" %>
+      <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "name" %>
     </div>
     <div class="form-group">
       <%= f.label :born %>
@@ -15,6 +15,7 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <div class="form-group">
       <%= f.submit "Save", class: 'btn btn-success' %>
+      <%= link_to "DELETE", remove_person_path(id: @person.id), method: :delete, data: { confirm: 'Are you sure you want to delete this person and all this person\'s events?' }, class: 'btn btn-danger' %>
     </div>
   <% end %>
 </div>
