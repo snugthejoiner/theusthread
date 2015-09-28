@@ -1,8 +1,14 @@
 class Person < ActiveRecord::Base
   belongs_to :user
   has_many :personal_events, dependent: :destroy
+  validates :name, presence: true
+  validates :born, presence: true
 
   default_scope { order(born: :desc) }
+
+  def personal_evented?
+    self.personal_events.present? == true
+  end
 
   # Month D, YYYY
   def born_date

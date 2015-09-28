@@ -22,8 +22,11 @@ class PersonalEventsController < ApplicationController
      if @personal_event.save
        flash[:notice] = "Your event was saved."
        redirect_to @person
+     elsif @personal_event.invalid?
+       flash[:alert] = "You must enter a description and a valid date! Nothing can be blank and the date of the event must be after the person was born."
+       redirect_to new_personal_event_path(person_id: @person.id)
      else
-       flash[:error] = "There was an error saving your event. Please try again."
+       flash[:alert] = "There was an error saving your event. Please try again."
        redirect_to root_path
      end
   end
@@ -55,7 +58,7 @@ class PersonalEventsController < ApplicationController
       flash[:notice] = "This event has been removed"
       redirect_to @personal_event.person
     else
-      flash[:error] = "There was an error."
+      flash[:alert] = "There was an error."
       render :show
     end
   end

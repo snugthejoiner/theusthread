@@ -14,6 +14,7 @@
 <% end %>
 
 <h1>New Event for <%= @person.name %></h1>
+<p>Create an event on or after <%= @personal_event.person.born.strftime('%m/%d/%Y') %></p>
 
 <div class="row">
   <div class="col-md-12">

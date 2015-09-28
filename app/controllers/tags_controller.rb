@@ -13,7 +13,7 @@ class TagsController < ApplicationController
     if @tag.save
       flash[:notice] = "Tag was created."
     else
-      flash[:error] = "There was an error saving the comment. Please try again."
+      flash[:alert] = "There was an error saving the comment. Please try again."
     end
   end
 
@@ -24,7 +24,7 @@ class TagsController < ApplicationController
       flash[:notice] = "Comment was removed."
       redirect_to [@personal_event]
     else
-      flash[:error] = "Comment couldn't be deleted. Try again."
+      flash[:alert] = "Comment couldn't be deleted. Try again."
       redirect_to [@personal_event]
     end
 
