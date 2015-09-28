@@ -4,10 +4,11 @@ class HistoricalEventsController < ApplicationController
 
   def index
     if current_user.nil?
-      @events = HistoricalEvent.all
+      @events = HistoricalEvent.newest
     else
       @events = (HistoricalEvent.all + PersonalEvent.user_people).sort_by { |h| h[:starting] }.reverse!
     end
+
   end
   
 end

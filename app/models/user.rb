@@ -11,9 +11,13 @@ class User < ActiveRecord::Base
   scope :subscribed, -> { where(subscribe: true)}
 
   def user_people_events
-    self.people.each do |p|
-      pe = p.personal_events
-      return pe.count
+    if self.people.exists?
+      self.people.each do |p|
+        pe = p.personal_events
+        return pe.count
+      end
+    else
+      0
     end
   end
 
