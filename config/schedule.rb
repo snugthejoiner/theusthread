@@ -12,7 +12,7 @@
   # runner "DigestMailer.digest_email(User.last).deliver_now", :environment => 'development'
 # end
 # 
-every 1.day, :at => '9:40 pm' do
-  rake "send_monthly", :environment => 'development'
+every 1.day, :at => '10:00 am' do
+  rake "send_monthly"
 end
 
