@@ -6,6 +6,14 @@ class Person < ActiveRecord::Base
 
   default_scope { order(born: :desc) }
 
+  def self.not_dead(history_date)
+    where("died > ?", history_date)
+  end
+
+  def self.been_born(history_date)
+    where("born <= ?", history_date)
+  end
+
   def personal_evented?
     self.personal_events.present? == true
   end

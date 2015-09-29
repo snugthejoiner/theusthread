@@ -18,7 +18,7 @@
     <% @personal_events.personal_newest.each do |personal_event| %>
       <tr>
         <td><%= event_start(personal_event) %>
-        <td><%= link_to personal_summary(personal_event), edit_personal_event_path(personal_event) %></td>
+        <td><%= link_to personal_event.description, edit_personal_event_path(personal_event) %></td>
       </tr>
       <% end %>
     </table>

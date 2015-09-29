@@ -5,8 +5,18 @@ module PersonalEventsHelper
     personal_event.starting.strftime('%m/%d/%Y')
   end
 
-  def personal_summary(personal_event)
-    "#{personal_event.person.name} #{personal_event.description.downcase} "
-  end 
+  def event_end(personal_event)
+    unless personal_event.ending.nil?
+      personal_event.ending.strftime('%m/%d/%Y')
+    end
+  end
+
+  def event_person_birth(personal_event)
+    personal_event.person.born.strftime('%m/%d/%Y')
+  end
+
+  def event_person_death(personal_event)
+    personal_event.person.died.strftime('%m/%d/%Y')
+  end
 
 end

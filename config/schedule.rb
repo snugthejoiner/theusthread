@@ -15,3 +15,4 @@
 every 1.day, :at => '9:40 pm' do
   rake "send_monthly", :environment => 'development'
 end
+

@@ -23,7 +23,7 @@ class PersonalEventsController < ApplicationController
        flash[:notice] = "Your event was saved."
        redirect_to @person
      elsif @personal_event.invalid?
-       flash[:alert] = "You must enter a description and a valid date! Nothing can be blank and the date of the event must be after the person was born."
+       flash[:alert] = "You must enter a description and a valid date! Nothing can be blank and the date of the event must be after the person was born (and before that person died, if applicable)."
        redirect_to new_personal_event_path(person_id: @person.id)
      else
        flash[:alert] = "There was an error saving your event. Please try again."

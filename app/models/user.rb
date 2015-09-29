@@ -21,6 +21,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def oldest_user_person
+    if self.people.exists?
+      self.people.order('born DESC').first.born
+    end
+  end
+
   def user_people_evented?
     self.user_people_events > 0
   end

@@ -7,7 +7,7 @@ class HistoricalEvent < ActiveRecord::Base
  }
 
   def self.ongoing_started(history_date)
-    where("ending >= ?", history_date)
+    where("ending > ?", history_date)
   end
 
   def self.ongoing_unfinished(history_date)
