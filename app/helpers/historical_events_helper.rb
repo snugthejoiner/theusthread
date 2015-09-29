@@ -1,32 +1,15 @@
 module HistoricalEventsHelper
 
-  def summary(event)
-    if event.class.name == "PersonalEvent" 
-      "#{event.person.name} #{event.description.downcase} "
+  def ongoing(event)
+    if event.class.name == "PersonalEvent"
+      he = HistoricalEvent.ongoing_started(event.starting).ongoing_unfinished(event.starting).map(&:ongoing_status).join(", ")
     else
-      "#{event.description}"
+      pe = PersonalEvent.personal_started(event.starting).personal_unfinished(event.starting).map(&:description).join(", ")
     end
   end
-
-  def blurb(event)
-    if event.class.name == "PersonalEvent" 
-      he = HistoricalEvent.ongoing_started(event.starting).ongoing_unfinished(event.starting).map(&:ongoing_status).join(",")
-    end
-  end
-
-  # def blurb(event)
-    # something interesting
-    # elsif event.respond_to?(:premilestone_status) && event.premilestone_status.to_s != ''
-      # "\n #{event.premilestone_status}"
-    # elsif event.respond_to?(:premilestone_status) && event.ongoing_status.to_s != ''
-      # "\n #{event.ongoing_status}"
-    # else
-      # nil
-    # end
-  # end
 
   def age_of_person(event, person)
-    if event.starting > person.born
+    if event.starting > person.born && event.starting < person.died
       "#{person.name} is #{distance_of_time_in_words(event.starting, person.born).sub(/^about /i, "").sub(/^almost /i, "").sub(/^over /i, "")} old"
     else
       nil

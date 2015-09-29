@@ -13,7 +13,7 @@
 <% end %>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <table class="table table-bordered table-hover">
     <caption><%= @person.name %> | <%= link_to "edit", edit_person_path(@person) %></caption>
       <tr><td>born <%= @person.born_long_date %></td></tr>
@@ -22,7 +22,7 @@
         <% end %>
     </table>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-8">
     <table class="table table-bordered table-hover">
     <caption><%= @person.name %>'s events | <%= link_to "new event", new_personal_event_path(person_id: @person.id) %></caption>
     <% if @person.personal_evented? %>
@@ -30,6 +30,7 @@
       <tr>
         <td><%= event_start(personal_event) %></td>
         <td><%= link_to personal_event.description, edit_personal_event_path(personal_event, person_id: @person.id) %></td>
+        <td><%= event_end(personal_event) %></td>
       </tr>
       <% end %>
       <% else %>

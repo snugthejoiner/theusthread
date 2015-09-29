@@ -14,8 +14,13 @@
 <% end %>
 
 <h1>New Event for <%= @person.name %></h1>
-<p>Create an event on or after <%= @personal_event.person.born.strftime('%m/%d/%Y') %></p>
-
+<p>Create an event on or after <strong><%= event_person_birth(@personal_event) %></strong>
+<% if event_person_death(@personal_event) %>
+  and before <strong><%= event_person_death(@personal_event) %></strong>
+  <% end %>
+</p>
+<p>Events with a start date and no end date will appear <strong>only on that date</strong></p>
+<p>Events with a start and end date will appear <strong>on all dates</strong> within that range</p>
 <div class="row">
   <div class="col-md-12">
     <%= render 'form' %>

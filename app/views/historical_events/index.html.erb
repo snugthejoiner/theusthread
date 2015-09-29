@@ -3,27 +3,32 @@
   <p class="notice"><%= notice %></p>
 <% end %>
 <p class="alert"><%= alert %></p>
+
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event_start(event) %></td>
-        <td><%= summary(event) %>
-          <% if blurb(event) %>
-            <br><%= blurb(event) %>
-          <% end %>
-          <% if @current_user %>
-            <% @current_user.people.each do |person| %>
-              <% if age_of_person(event, person) %>
-                <br><%= age_of_person(event, person) %>
+      <% @events.each do |event| %>
+        <tr> <!-- event date and summary row begins -->
+          <td><%= event_start(event) %></td><!-- event date -->
+          <td><%= event.description %><!-- event summary -->
+            <% unless ongoing(event) == "" %>
+              <br><span class="status"><%= ongoing(event) %></span><!-- ongoing statuses -->
               <% end %>
+            <% if @current_user %>
+              <% unless event.starting < current_user.oldest_user_person %>
+              <br><span class="personal"><% @current_user.people.each do |person| %><!-- age of people -->
+                  <% if age_of_person(event, person) %>
+                    <%= age_of_person(event, person) %>.
+                  <% end %>
+                <% end %>
+              </span>
             <% end %>
           <% end %>
           <% if event.tags %>
             <br><small><em><%= taglist(event) %></em></small>
           <% end %>
-      </tr>
+        </td>
+      </tr><!-- event date and summary row ends -->
       <% end %>
     </table>
   </div>
