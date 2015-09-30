@@ -3,8 +3,7 @@ class HistoricalEvent < ActiveRecord::Base
 
   scope :ongoing, -> { where('ongoing_status' != nil) }
   scope :newest, -> { order(starting: :desc) }
-  scope :monthy, -> { where('extract(month from starting) = ?', Time.now.month)
- }
+  scope :monthy, -> { where('extract(month from starting) = ?', Time.now.month)}
 
   def self.ongoing_started(history_date)
     where("ending > ?", history_date)
