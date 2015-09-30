@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   def oldest_user_person
     if self.people.exists?
-      self.people.order('born DESC').first.born
+      self.people.reorder('people.born ASC').first.born
     end
   end
 

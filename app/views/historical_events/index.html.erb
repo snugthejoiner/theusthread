@@ -15,13 +15,15 @@
               <br><span class="status"><%= ongoing(event) %></span><!-- ongoing statuses -->
               <% end %>
             <% if current_user %>
-              <% unless event.starting < current_user.oldest_user_person %>
-              <br><span class="personal"><% current_user.people.each do |person| %><!-- age of people -->
-                  <% if age_of_person(event, person) %>
-                    <%= age_of_person(event, person) %>.
+              <% if current_user.people.exists? %>
+                <% unless event.starting < current_user.oldest_user_person %>
+                <br><span class="personal"><% current_user.people.each do |person| %><!-- age of people -->
+                    <% if age_of_person(event, person) %>
+                      <%= age_of_person(event, person) %>.
+                    <% end %>
                   <% end %>
-                <% end %>
-              </span>
+                </span>
+              <% end %>
             <% end %>
           <% end %>
           <% if event.tags %>

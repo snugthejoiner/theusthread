@@ -16,7 +16,9 @@ module PersonalEventsHelper
   end
 
   def event_person_death(personal_event)
-    personal_event.person.died.strftime('%m/%d/%Y')
+    unless personal_event.person.died.nil?
+      personal_event.person.died.strftime('%m/%d/%Y')
+    end
   end
 
 end
