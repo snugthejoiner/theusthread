@@ -9,7 +9,7 @@ module HistoricalEventsHelper
   end
 
   def age_of_person(event, person)
-    if event.starting > person.born && event.starting < person.died
+    if event.starting > person.born && (person.died.present? && event.starting < person.died)
       "#{person.name} is #{distance_of_time_in_words(event.starting, person.born).sub(/^about /i, "").sub(/^almost /i, "").sub(/^over /i, "")} old"
     else
       nil
